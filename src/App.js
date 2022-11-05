@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import { menuData } from "./data";
+import {List} from './Composant/List'
 
-function App() {
+
+
+const App = () =>{
+const [data, setData] = useState(menuData)
+const handelDelete=(id)=>setData(data.filter(el=>el.id!==id))
+// console.log(data)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <List list={data} deleteMovie={handelDelete}/>
     </div>
   );
 }
